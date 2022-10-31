@@ -1,0 +1,58 @@
+﻿@page
+@model ConcerWebAPP.Models.Artist
+
+<!DOCTYPE html>
+<html>
+<head>    
+    <meta charset="utf-8" />
+    <link href="~/css/Table.css" rel="stylesheet">
+    <title>Артисти</title>
+</head>
+<body class="Body">
+    <table class="add_edit_table">
+        <tr class="tr1">
+            <td colspan="2" class="td1">
+                <h4>Додати артиста</h4>
+            </td>            
+        </tr>
+        <tr class="tr1">
+            <td class="td1">
+                <form action="javascript:void(0);" method="POST" onsubmit="addArtist()">
+                    <input type="text" id="add-name" placeholder="Ім'я"/>
+                    <span asp-validation-for="name_artist"></span>
+                    <input type="submit" value="Додати" />
+                </form>
+            </td>
+        </tr>
+        <tr class="tr1">
+            <td class="td1">
+                <h5>Редагувати інформацію про артиста</h5>
+            </td>
+         </tr>
+         <tr class="tr1">
+            <td class="td1">
+                <div id="editArtist">                    
+                    <form action="javascript:void(0);" onsubmit="updateArtist()">
+                        <input type="hidden" id="edit-id" />
+                        <input type="text" id="edit-name" />
+                        <input type="submit" value="Зберегти" />
+                        <a onclick="closeInput()" aria-label="Close">&times;</a>
+                    </form>
+                </div>
+            </td>
+        </tr>        
+    </table>
+
+    <table>
+        <tr>
+            <th>Ім'я</th>
+        </tr>
+        <tbody id="artists"></tbody>
+    </table>
+
+    <script src="js/Artists.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getArtists();
+    </script>
+</body>
+</html>

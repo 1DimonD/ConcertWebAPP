@@ -1,0 +1,57 @@
+﻿@page
+@model ConcerWebAPP.Pages.SongsModel
+
+<!DOCTYPE html>
+<html>
+<head>    
+    <meta charset="utf-8" />
+    <link href="~/css/Table.css" rel="stylesheet">
+    <title>Пісні</title>
+</head>
+<body class="Body">
+    <table class="add_edit_table">
+        <tr class="tr1">
+            <td colspan="2" class="td1">
+                <h4>Додати пісню</h4>
+            </td>            
+        </tr>
+        <tr class="tr1">
+            <td class="td1">
+                <form action="javascript:void(0);" method="POST" onsubmit="addSong()">
+                    <input type="text" id="add-name" placeholder="Назва"/>
+                    <input type="submit" value="Додати" />
+                </form>
+            </td>
+        </tr>
+        <tr class="tr1">
+            <td class="td1">
+                <h5>Редагувати інформацію про пісню</h5>
+            </td>
+         </tr>
+         <tr class="tr1">
+            <td class="td1">
+                <div id="editSong">                    
+                    <form action="javascript:void(0);" onsubmit="updateSong()">
+                        <input type="hidden" id="edit-id" />
+                        <input type="text" id="edit-name" />
+                        <input type="submit" value="Зберегти" />
+                        <a onclick="closeInput()" aria-label="Close">&times;</a>
+                    </form>
+                </div>
+            </td>
+        </tr>        
+    </table>
+
+    <table>
+        <tr>
+            <th>Назва</th>
+        </tr>
+        <tbody id="songs"></tbody>
+    </table>
+
+    <script src="js/Songs.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getSongs();
+    </script>
+</body>
+</html>
